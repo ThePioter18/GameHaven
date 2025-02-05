@@ -1,3 +1,5 @@
+@use './colors' as *;
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -8,5 +10,28 @@ body {
 	font-family: 'Montserrat', serif;
 	font-optical-sizing: auto;
 	background-color: #333;
-	color: #fff;
+}
+
+nav {
+	text-transform: uppercase;
+
+	.nav-link,
+	.navbar-nav .nav-link.show,
+	.navbar-brand,
+	.ti-menu-2 {
+		color: $white-color;
+	}
+
+	.nav-link:focus,
+	.nav-link:hover,
+	.navbar-nav .nav-link.active,
+	.navbar-nav .nav-link.show {
+		color: $main-color;
+	}
+
+	.navbar-brand {
+		img {
+			width: 200px;
+		}
+	}
 }

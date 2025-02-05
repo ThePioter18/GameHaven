@@ -9,5 +9,23 @@ body {
   font-family: "Montserrat", serif;
   font-optical-sizing: auto;
   background-color: #333;
+}
+
+nav {
+  text-transform: uppercase;
+}
+nav .nav-link,
+nav .navbar-nav .nav-link.show,
+nav .navbar-brand,
+nav .ti-menu-2 {
   color: #fff;
+}
+nav .nav-link:focus,
+nav .nav-link:hover,
+nav .navbar-nav .nav-link.active,
+nav .navbar-nav .nav-link.show {
+  color: #039dff;
+}
+nav .navbar-brand img {
+  width: 200px;
 }/*# sourceMappingURL=main.css.map */
