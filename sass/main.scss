@@ -12,14 +12,30 @@ body {
 	background-color: #333;
 }
 
+.blue-text {
+	color: $main-color;
+}
+
+.shadow-bg {
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
 nav {
 	text-transform: uppercase;
+	transition: all 0.6s ease-in-out;
+	z-index: 2;
+
+	.navbar-toggler {
+		padding: 10px 15px;
+		border: 1px solid $white-color;
+	}
 
 	.nav-link,
 	.navbar-nav .nav-link.show,
 	.navbar-brand,
 	.ti-menu-2 {
 		color: $white-color;
+		transition: color 0.3s ease-in-out;
 	}
 
 	.nav-link:focus,
@@ -31,7 +47,118 @@ nav {
 
 	.navbar-brand {
 		img {
-			width: 200px;
+			width: 150px;
 		}
+
+		transition: all 0.3s ease-in-out;
+	}
+
+	.navbar-brand:hover {
+		box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+		border-radius: 10px;
+	}
+}
+
+header.hero-img {
+	position: relative;
+
+	height: 100vh;
+	background-image: url('../img/hero-small.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	color: $white-color;
+	z-index: 1;
+
+	.hero-text {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 100%;
+
+		h1 {
+			text-transform: uppercase;
+		}
+	}
+	.hero-shadow {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.7);
+		z-index: -1;
+	}
+
+	.btn-outline-light {
+		transition: background-color 0.3s ease-in-out;
+	}
+	.btn-outline-light:hover {
+		background-color: $main-color;
+	}
+	.ti-chevrons-down {
+		position: absolute;
+		bottom: 3%;
+		left: 50%;
+		transform: translateX(-50%);
+		font-size: 35px;
+		color: $white-color;
+		transition: color 0.3s ease-in-out;
+		animation: alternate bounce-top 2.2s infinite both;
+	}
+	.ti-chevrons-down:hover {
+		color: $main-color;
+	}
+	@keyframes bounce-top {
+		0% {
+			transform: translateX(-50%) translateY(-25px);
+			transform-origin: center bottom;
+			animation-timing-function: ease-in;
+		}
+		25% {
+			transform: translateX(-50%) translateY(-25px);
+			transform-origin: center bottom;
+			animation-timing-function: ease-in;
+		}
+		50% {
+			transform: translateX(-50%) translateY(0);
+			transform-origin: center bottom;
+			animation-timing-function: ease-out;
+		}
+		75% {
+			transform: translateX(-50%) translateY(-25px);
+			transform-origin: center bottom;
+			animation-timing-function: ease-out;
+		}
+		100% {
+			transform: translateX(-50%) translateY(-25px);
+			transform-origin: center bottom;
+			animation-timing-function: ease-out;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.hero-text {
+		h1 {
+			font-size: 42px;
+		}
+		p {
+			font-size: 20px;
+		}
+	}
+	nav {
+		.navbar-brand {
+			img {
+				width: 200px;
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	header.hero-img {
+		background-image: url('../img/hero-big.jpg');
 	}
 }
