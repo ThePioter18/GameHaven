@@ -11,14 +11,31 @@ body {
   background-color: #333;
 }
 
+.blue-text {
+  color: #039dff;
+}
+
+.shadow-bg {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
 nav {
   text-transform: uppercase;
+  -webkit-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+  z-index: 2;
+}
+nav .navbar-toggler {
+  padding: 10px 15px;
+  border: 1px solid #fff;
 }
 nav .nav-link,
 nav .navbar-nav .nav-link.show,
 nav .navbar-brand,
 nav .ti-menu-2 {
   color: #fff;
+  -webkit-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 nav .nav-link:focus,
 nav .nav-link:hover,
@@ -26,6 +43,178 @@ nav .navbar-nav .nav-link.active,
 nav .navbar-nav .nav-link.show {
   color: #039dff;
 }
+nav .navbar-brand {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
 nav .navbar-brand img {
-  width: 200px;
+  width: 150px;
+}
+nav .navbar-brand:hover {
+  -webkit-box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+          box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+  border-radius: 10px;
+}
+
+header.hero-img {
+  position: relative;
+  height: 100vh;
+  background-image: url("../img/hero-small.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  z-index: 1;
+}
+header.hero-img .hero-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+header.hero-img .hero-text h1 {
+  text-transform: uppercase;
+}
+header.hero-img .hero-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+header.hero-img .btn-outline-light {
+  -webkit-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+header.hero-img .btn-outline-light:hover {
+  background-color: #039dff;
+}
+header.hero-img .ti-chevrons-down {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 35px;
+  color: #fff;
+  -webkit-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+  -webkit-animation: alternate bounce-top 2.2s infinite both;
+          animation: alternate bounce-top 2.2s infinite both;
+}
+header.hero-img .ti-chevrons-down:hover {
+  color: #039dff;
+}
+@-webkit-keyframes bounce-top {
+  0% {
+    -webkit-transform: translateX(-50%) translateY(-25px);
+            transform: translateX(-50%) translateY(-25px);
+    -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  25% {
+    -webkit-transform: translateX(-50%) translateY(-25px);
+            transform: translateX(-50%) translateY(-25px);
+    -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  50% {
+    -webkit-transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0);
+    -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  75% {
+    -webkit-transform: translateX(-50%) translateY(-25px);
+            transform: translateX(-50%) translateY(-25px);
+    -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  100% {
+    -webkit-transform: translateX(-50%) translateY(-25px);
+            transform: translateX(-50%) translateY(-25px);
+    -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+@keyframes bounce-top {
+  0% {
+    -webkit-transform: translateX(-50%) translateY(-25px);
+            transform: translateX(-50%) translateY(-25px);
+    -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  25% {
+    -webkit-transform: translateX(-50%) translateY(-25px);
+            transform: translateX(-50%) translateY(-25px);
+    -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  50% {
+    -webkit-transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0);
+    -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  75% {
+    -webkit-transform: translateX(-50%) translateY(-25px);
+            transform: translateX(-50%) translateY(-25px);
+    -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  100% {
+    -webkit-transform: translateX(-50%) translateY(-25px);
+            transform: translateX(-50%) translateY(-25px);
+    -webkit-transform-origin: center bottom;
+            transform-origin: center bottom;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-text h1 {
+    font-size: 42px;
+  }
+  .hero-text p {
+    font-size: 20px;
+  }
+  nav .navbar-brand img {
+    width: 200px;
+  }
+}
+@media (min-width: 1200px) {
+  header.hero-img {
+    background-image: url("../img/hero-big.jpg");
+  }
 }/*# sourceMappingURL=main.css.map */
