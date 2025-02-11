@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg position-fixed top-0 w-100">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="./img/logoGameHaven.png" alt="logo strony GameHaven">
+                <img src="./assets/logoGameHaven.png" alt="logo strony GameHaven">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,18 +39,42 @@
         </div>
     </nav>
 
-    <header class="hero-img" id="home">
+    <header class="hero-video" id="home">
+        <video class="video" autoplay muted playsinline>
+            <source src="./assets/hero-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="hero-text text-center p-3">
-            <h1>Witajcie w Game<span class="blue-text">Haven</span></h1>
-            <p>Przystań dla epickiej rozgrywki, gdzie pasja do gier łączy graczy!</p>
-            <a href="#aboutus" class="btn btn-outline-light mt-3 text-uppercase">poznaj nas</a>
+            <div class="hero-text-inner">
+                <h1>Witajcie w Game<span class="blue-text">Haven</span></h1>
+                <p>Przystań dla epickiej rozgrywki, gdzie pasja do gier łączy graczy!</p>
+                <a href="#aboutus" class="btn btn-outline-light mt-3 text-uppercase">poznaj nas</a>
+            </div>
         </div>
         <div class="hero-shadow"></div>
         <a href="#aboutus"> <i class="ti ti-chevrons-down"></i>
         </a>
+        <button class="toggle-background btn btn-outline-light mt-3 text-uppercase d-xl-block d-none">zmień
+            tło na obraz</button>
     </header>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
     <section id="aboutus" style="height: 30vh; background-color: #ddd"></section>
+
+
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

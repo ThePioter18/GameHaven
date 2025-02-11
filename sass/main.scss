@@ -59,57 +59,62 @@ nav {
 	}
 }
 
-header.hero-img {
+@mixin hero-section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
 	position: relative;
 
-	height: 100vh;
-	background-image: url('../img/hero-small.jpg');
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
+	h1 {
+		text-transform: uppercase;
+	}
+
+	.hero-text-inner {
+		position: relative;
+		backdrop-filter: blur(8px);
+		border-radius: 20px;
+		padding: 20px;
+		z-index: 2;
+	}
+}
+
+// Mixin for the shadow background
+@mixin hero-shadow($opacity: 0.7) {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, $opacity);
+	z-index: -1;
+}
+
+// Mixin for buttons with custom color
+@mixin hero-button($color) {
+	transition: background-color 0.3s ease-in-out;
+
+	&:hover {
+		background-color: $color;
+	}
+}
+
+// Mixin for the animated scroll arrow
+@mixin scroll-animation {
+	position: absolute;
+	bottom: 3%;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 35px;
 	color: $white-color;
-	z-index: 1;
+	transition: color 0.3s ease-in-out;
+	animation: bounce-top 2.2s infinite both;
 
-	.hero-text {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		height: 100%;
-
-		h1 {
-			text-transform: uppercase;
-		}
-	}
-	.hero-shadow {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.7);
-		z-index: -1;
-	}
-
-	.btn-outline-light {
-		transition: background-color 0.3s ease-in-out;
-	}
-	.btn-outline-light:hover {
-		background-color: $main-color;
-	}
-	.ti-chevrons-down {
-		position: absolute;
-		bottom: 3%;
-		left: 50%;
-		transform: translateX(-50%);
-		font-size: 35px;
-		color: $white-color;
-		transition: color 0.3s ease-in-out;
-		animation: alternate bounce-top 2.2s infinite both;
-	}
-	.ti-chevrons-down:hover {
+	&:hover {
 		color: $main-color;
 	}
+
 	@keyframes bounce-top {
 		0% {
 			transform: translateX(-50%) translateY(-25px);
@@ -138,6 +143,91 @@ header.hero-img {
 		}
 	}
 }
+// Mixin for the background change buttton
+@mixin toggle-button {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 50px;
+	cursor: pointer;
+}
+
+// Mixin for background images
+@mixin background-hero($image) {
+	position: relative;
+	height: 100vh;
+	background-image: url($image);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	color: $white-color;
+	z-index: 1;
+}
+
+header.hero-img {
+	@include background-hero('../assets/hero-small.jpg');
+
+	.hero-text {
+		@include hero-section;
+	}
+
+	.hero-shadow {
+		@include hero-shadow(0.5);
+	}
+
+	.btn-outline-light {
+		@include hero-button($main-color);
+	}
+
+	.ti-chevrons-down {
+		@include scroll-animation;
+	}
+
+	.toggle-background {
+		@include toggle-button;
+	}
+}
+
+header.hero-video {
+	position: relative;
+	height: 100vh;
+	color: $white-color;
+
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		z-index: -2;
+		transition: opacity 4s ease-out;
+	}
+
+	video.end {
+		opacity: 0;
+	}
+
+	.hero-text {
+		@include hero-section;
+	}
+
+	.hero-shadow {
+		@include hero-shadow(0.4);
+	}
+
+	.btn-outline-light {
+		@include hero-button($main-color);
+	}
+
+	.ti-chevrons-down {
+		@include scroll-animation;
+	}
+
+	.toggle-background {
+		@include toggle-button;
+	}
+}
 
 @media (min-width: 768px) {
 	.hero-text {
@@ -159,6 +249,16 @@ header.hero-img {
 
 @media (min-width: 1200px) {
 	header.hero-img {
-		background-image: url('../img/hero-big.jpg');
+		background-image: url('../assets/hero-big.jpg');
+	}
+}
+
+@media (max-width: 1200px) {
+	header.hero-video {
+		@include background-hero('../assets/hero-small.jpg');
+
+		video {
+			display: none;
+		}
 	}
 }
