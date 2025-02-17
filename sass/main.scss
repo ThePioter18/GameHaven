@@ -299,6 +299,61 @@ header.hero-video {
 		}
 	}
 }
+@mixin img-properties($height) {
+	height: $height;
+	object-fit: cover;
+	object-position: 55% 45%;
+}
+.pc-gaming-haven {
+	.card-body {
+		text-align: center;
+
+		.card-text {
+			margin-top: 15px;
+		}
+	}
+	.card {
+		img {
+			@include img-properties(300px);
+		}
+	}
+	.carousel-item {
+		img {
+			@include img-properties(600px);
+		}
+	}
+	.carousel-caption {
+		left: 0;
+		right: 0;
+		padding: 40px 0;
+		background-color: rgba(0, 0, 0, 0.8);
+	}
+	.carousel-indicators {
+		padding-bottom: 20px;
+	}
+
+	.carousel-control-prev-icon,
+	.carousel-control-next-icon {
+		background-image: none;
+	}
+
+	.ti-circle-chevron-left-filled,
+	.ti-circle-chevron-right-filled {
+		color: $light-gray;
+		font-size: 70px;
+	}
+	.cooling-name {
+		font-weight: bold;
+		color: #007bff;
+	}
+	.case-name {
+		font-weight: bold;
+		color: #007bff;
+	}
+	.rgb-list {
+		padding-left: 20px;
+	}
+}
 
 @media (min-width: 768px) {
 	.hero-text {
