@@ -413,6 +413,56 @@ header.hero-video .toggle-background {
   font-size: 24px;
 }
 
+.pc-gaming-haven .card-body {
+  text-align: center;
+}
+.pc-gaming-haven .card-body .card-text {
+  margin-top: 15px;
+}
+.pc-gaming-haven .card img {
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 55% 45%;
+     object-position: 55% 45%;
+}
+.pc-gaming-haven .carousel-item img {
+  height: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 55% 45%;
+     object-position: 55% 45%;
+}
+.pc-gaming-haven .carousel-caption {
+  left: 0;
+  right: 0;
+  padding: 40px 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.pc-gaming-haven .carousel-indicators {
+  padding-bottom: 20px;
+}
+.pc-gaming-haven .carousel-control-prev-icon,
+.pc-gaming-haven .carousel-control-next-icon {
+  background-image: none;
+}
+.pc-gaming-haven .ti-circle-chevron-left-filled,
+.pc-gaming-haven .ti-circle-chevron-right-filled {
+  color: #ddd;
+  font-size: 70px;
+}
+.pc-gaming-haven .cooling-name {
+  font-weight: bold;
+  color: #007bff;
+}
+.pc-gaming-haven .case-name {
+  font-weight: bold;
+  color: #007bff;
+}
+.pc-gaming-haven .rgb-list {
+  padding-left: 20px;
+}
+
 @media (min-width: 768px) {
   .hero-text h1 {
     font-size: 42px;
