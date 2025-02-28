@@ -517,12 +517,133 @@ header.hero-video {
 		}
 	}
 }
+.team {
+	position: relative;
+	background-image: url('../assets/team/meeting-room-small.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+	z-index: 0;
+
+	.section-title {
+		color: $light-gray;
+	}
+
+	.team-shadow {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.6);
+		z-index: -5;
+	}
+
+	.swiper {
+		margin: 0 30px;
+		padding-bottom: 50px;
+	}
+
+	.swiper-slide {
+		display: flex;
+		height: auto;
+	}
+
+	.card {
+		width: 100%;
+		margin: 10px;
+
+		img {
+			@include img-properties(160px);
+		}
+
+		i {
+			padding: 10px;
+		}
+
+		.special-image-top {
+			object-position: 10% 10%;
+		}
+		.special-image {
+			object-position: 20% 20%;
+		}
+
+		.card-body {
+			text-align: center;
+			font-size: 14px;
+			color: #4a4a4a;
+			.card-title {
+				height: 40px;
+				font-size: 18px;
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+
+			.card-text span {
+				font-weight: bold;
+			}
+		}
+
+		transition: scale 0.3s ease-in-out;
+	}
+
+	.card:hover {
+		scale: 0.96;
+	}
+
+	.card-footer {
+		text-align: center;
+		padding: 10px 0;
+	}
+
+	.card-footer a {
+		font-size: 24px;
+		text-decoration: none;
+		transition: color 0.3s;
+	}
+
+	.card-footer a:hover {
+		color: $main-color;
+	}
+
+	.swiper-pagination span {
+		background-color: $light-gray;
+	}
+
+	.swiper-button-prev:after,
+	.swiper-button-next:after {
+		display: none;
+	}
+}
+
 @media (min-width: 410px) {
 	.prices {
 		.img-xbox {
 			left: 30px;
 			top: -150px;
 			width: 90%;
+		}
+	}
+	.team {
+		.swiper {
+			margin: 0 45px;
+		}
+
+		.card {
+			img {
+				height: 220px;
+			}
+		}
+	}
+}
+@media (min-width: 567px) {
+	.team {
+		.swiper {
+			margin: 0 85px;
+		}
+		.card {
+			img {
+				height: 300px;
+			}
 		}
 	}
 }
@@ -548,6 +669,16 @@ header.hero-video {
 			top: -90px;
 		}
 	}
+	.team {
+		.swiper {
+			margin: 0 45px;
+		}
+		.card {
+			img {
+				height: 250px;
+			}
+		}
+	}
 }
 
 @media (min-width: 992px) {
@@ -562,6 +693,25 @@ header.hero-video {
 			top: -125px;
 		}
 	}
+
+	.team {
+		background-image: url('../assets/team/meeting-room-big.jpg');
+
+		.swiper-button-prev:after,
+		.swiper-button-next:after {
+			display: block;
+			color: $main-color;
+		}
+		.swiper [class^='swiper-button-'] {
+			width: 5px;
+		}
+		.swiper {
+			.card {
+				width: 80%;
+				margin: 0 auto;
+			}
+		}
+	}
 }
 
 @media (min-width: 1200px) {
@@ -574,8 +724,41 @@ header.hero-video {
 			top: -90px;
 		}
 	}
+
+	.team {
+		.card {
+			img {
+				height: 180px;
+			}
+		}
+	}
 }
 
+@media (min-width: 1600px) {
+	.team {
+		.swiper {
+			margin: 0 250px;
+		}
+	}
+}
+@media (max-width: 320px) {
+	.team {
+		.card {
+			width: 100%;
+			margin: 10px;
+
+			img {
+				@include img-properties(120px);
+			}
+		}
+		.swiper-horizontal > .swiper-pagination-bullets,
+		.swiper-pagination-bullets.swiper-pagination-horizontal,
+		.swiper-pagination-custom,
+		.swiper-pagination-fraction {
+			bottom: 35px;
+		}
+	}
+}
 @media (max-width: 1200px) {
 	header.hero-video {
 		@include background-hero('../assets/hero-small.jpg');
