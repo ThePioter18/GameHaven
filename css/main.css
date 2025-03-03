@@ -732,6 +732,22 @@ header.hero-video .toggle-background {
   display: none;
 }
 
+.achievements-list {
+  padding: 20px 0;
+}
+.achievements-list .achiev-item i {
+  padding: 10px;
+  font-size: 48px;
+  color: #424242;
+}
+.achievements-list .achiev-number {
+  font-size: 22px;
+}
+.achievements-list .achiev-text {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
 @media (min-width: 410px) {
   .prices .img-xbox {
     left: 30px;
