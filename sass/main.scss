@@ -306,6 +306,25 @@ header.hero-video {
 	object-position: 55% 45%;
 }
 
+@mixin add-image-with-shadow($image, $shadow) {
+	position: relative;
+	background-image: url($image);
+	background-size: cover;
+	background-attachment: fixed;
+	z-index: 0;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: $shadow;
+		z-index: -5;
+	}
+}
+
 .pc-gaming-haven {
 	.card-body {
 		text-align: center;
@@ -517,27 +536,13 @@ header.hero-video {
 		}
 	}
 }
+
 .team {
-	position: relative;
-	background-image: url('../assets/team/meeting-room-small.jpg');
-	background-size: cover;
-	background-attachment: fixed;
-	z-index: 0;
+	@include add-image-with-shadow('../assets/team/meeting-room-small.jpg', rgba(0, 0, 0, 0.6));
 
 	.section-title {
 		color: $light-gray;
 	}
-
-	.team-shadow {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.6);
-		z-index: -5;
-	}
-
 	.swiper {
 		margin: 0 30px;
 		padding-bottom: 50px;
@@ -631,6 +636,131 @@ header.hero-video {
 	}
 }
 
+@mixin right-position-element() {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.contact {
+	@include add-image-with-shadow('../assets/contact/warsaw-small.jpg', rgba(0, 9, 27, 0.8));
+	color: $white-color;
+
+	.section-title {
+		color: $light-gray;
+	}
+
+	.contact-item h3,
+	.map-item h3 {
+		color: $white-color;
+	}
+
+	.map-item .map-icon {
+		font-size: 35px;
+	}
+	.contact-item .contact-icon {
+		font-size: 40px;
+	}
+
+	.underline {
+		background-color: $light-gray;
+	}
+
+	.contact-us {
+		display: flex;
+		align-items: center;
+
+		.contact-item {
+			margin: 30px 0;
+
+			h3 {
+				margin-bottom: 15px;
+				font-size: 1.5rem;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+			}
+		}
+
+		.contact-info {
+			.contact-text span {
+				font-weight: bold;
+				color: #90ee90;
+			}
+		}
+
+		.social-media {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			font-size: 26px;
+
+			a {
+				padding: 10px;
+				color: $white-color;
+				text-decoration: none;
+				transition: color 0.3s;
+			}
+
+			a:hover {
+				color: $main-color;
+			}
+		}
+	}
+
+	.social-media h3 {
+		padding-left: 10px;
+	}
+
+
+	.contact-item {
+		.opening-hours {
+			.opening-title {
+				text-align: right;
+			}
+			.opening-text span {
+				font-weight: bold;
+				color: $main-color;
+			}
+		}
+		.opening-hours,
+		.contact-form {
+			@include right-position-element();
+		}
+	}
+
+	.map-container {
+		iframe {
+			border-radius: 8px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+	}
+
+	form {
+		width: 100%;
+		padding: 20px;
+		border-radius: 8px;
+		background-color: #fff;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+		.form-control {
+			margin-bottom: 15px;
+		}
+
+		.btn-primary {
+			background-color: #007bff;
+			border: none;
+			padding: 10px 20px;
+			font-size: 1rem;
+			transition: background-color 0.3s;
+		}
+		.btn-primary:hover {
+			background-color: $main-color;
+		}
+	}
+}
+
 @media (min-width: 410px) {
 	.prices {
 		.img-xbox {
@@ -695,6 +825,12 @@ header.hero-video {
 			}
 		}
 	}
+
+	.contact {
+		form {
+			width: 90%;
+		}
+	}
 }
 
 @media (min-width: 992px) {
@@ -726,6 +862,12 @@ header.hero-video {
 				width: 80%;
 				margin: 0 auto;
 			}
+		}
+	}
+	.contact {
+		background-image: url('../assets/contact/warsaw-big.jpg');
+		.social-media {
+			margin-bottom: 40px;
 		}
 	}
 }
