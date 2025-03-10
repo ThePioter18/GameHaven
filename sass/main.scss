@@ -14,6 +14,7 @@ body {
 	font-family: 'Montserrat', serif;
 	font-optical-sizing: auto;
 	background-color: $bg-color;
+	overflow-x: hidden;
 }
 
 .blue-text {
@@ -119,6 +120,7 @@ nav {
 
 // Mixin for the animated scroll arrow
 @mixin scroll-animation {
+	display: block;
 	position: absolute;
 	bottom: 3%;
 	left: 50%;
@@ -381,6 +383,18 @@ header.hero-video {
 	}
 }
 
+@mixin img-height-mask() {
+	height: 165px;
+	mask-image: linear-gradient(to bottom, white 85%, transparent 100%),
+		repeating-linear-gradient(
+			45deg,
+			rgba(200, 200, 200, 0.5),
+			rgba(200, 200, 200, 0.5) 15px,
+			transparent 15px,
+			transparent 30px
+		);
+}
+
 .prices {
 	.price-box {
 		position: relative;
@@ -495,39 +509,30 @@ header.hero-video {
 	}
 
 	.img-wrap img {
-		width: 100%;
-		height: auto;
 		display: block;
-	}
-	.img-pc {
-		position: absolute;
-		left: 0;
-		top: 0;
 		width: 100%;
-		height: 165px;
-		mask-image: linear-gradient(to bottom, white 85%, transparent 100%),
-			repeating-linear-gradient(
-				45deg,
-				rgba(200, 200, 200, 0.5),
-				rgba(200, 200, 200, 0.5) 15px,
-				transparent 15px,
-				transparent 30px
-			);
+		height: auto;
 	}
-	.img-ps {
+
+	.img-wrap {
 		position: absolute;
 		left: 0;
 		top: 0;
 		width: 100%;
 		height: auto;
+	}
+
+	.img-pc {
+		@include img-height-mask();
+	}
+
+	.img-ps {
 		transform: rotateX(180deg);
 		z-index: -1;
 	}
+
 	.img-xbox {
-		position: absolute;
-		left: 20px;
-		top: -50px;
-		width: 90%;
+		@include img-height-mask();
 	}
 
 	.price-info {
@@ -713,7 +718,6 @@ header.hero-video {
 		padding-left: 10px;
 	}
 
-
 	.contact-item {
 		.opening-hours {
 			.opening-title {
@@ -761,13 +765,12 @@ header.hero-video {
 	}
 }
 
-
 @media (min-width: 410px) {
 	.prices {
 		.img-xbox {
-			left: 30px;
-			top: -150px;
-			width: 90%;
+			img {
+				@include img-properties(400px);
+			}
 		}
 	}
 	.team {
@@ -810,12 +813,7 @@ header.hero-video {
 			}
 		}
 	}
-	.prices {
-		.img-xbox {
-			left: 20px;
-			top: -90px;
-		}
-	}
+
 	.team {
 		.swiper {
 			margin: 0 45px;
@@ -840,11 +838,6 @@ header.hero-video {
 	}
 	.aboutus-hero {
 		background-image: url('../assets/platform-big.jpg');
-	}
-	.prices {
-		.img-xbox {
-			top: -125px;
-		}
 	}
 
 	.team {
@@ -876,12 +869,6 @@ header.hero-video {
 @media (min-width: 1200px) {
 	header.hero-img {
 		background-image: url('../assets/hero-big.jpg');
-	}
-
-	.prices {
-		.img-xbox {
-			top: -90px;
-		}
 	}
 
 	.team {

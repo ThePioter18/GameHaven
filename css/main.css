@@ -13,6 +13,7 @@ body {
   font-family: "Montserrat", serif;
   font-optical-sizing: auto;
   background-color: #ebecf2;
+  overflow-x: hidden;
 }
 
 .blue-text {
@@ -130,6 +131,7 @@ header.hero-img .btn-outline-light:hover {
   background-color: #039dff;
 }
 header.hero-img .ti-chevrons-down {
+  display: block;
   position: absolute;
   bottom: 3%;
   left: 50%;
@@ -302,6 +304,7 @@ header.hero-video .btn-outline-light:hover {
   background-color: #039dff;
 }
 header.hero-video .ti-chevrons-down {
+  display: block;
   position: absolute;
   bottom: 3%;
   left: 50%;
@@ -606,15 +609,18 @@ header.hero-video .toggle-background {
   background-color: #ffeba7;
 }
 .prices .img-wrap img {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
 }
-.prices .img-pc {
+.prices .img-wrap {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
+  height: auto;
+}
+.prices .img-pc {
   height: 165px;
   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(85%, white), to(transparent)), repeating-linear-gradient(45deg, rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5) 15px, transparent 15px, transparent 30px);
   -webkit-mask-image: linear-gradient(to bottom, white 85%, transparent 100%), repeating-linear-gradient(45deg, rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5) 15px, transparent 15px, transparent 30px);
@@ -622,20 +628,16 @@ header.hero-video .toggle-background {
           mask-image: linear-gradient(to bottom, white 85%, transparent 100%), repeating-linear-gradient(45deg, rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5) 15px, transparent 15px, transparent 30px);
 }
 .prices .img-ps {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: auto;
   -webkit-transform: rotateX(180deg);
           transform: rotateX(180deg);
   z-index: -1;
 }
 .prices .img-xbox {
-  position: absolute;
-  left: 20px;
-  top: -50px;
-  width: 90%;
+  height: 165px;
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(85%, white), to(transparent)), repeating-linear-gradient(45deg, rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5) 15px, transparent 15px, transparent 30px);
+  -webkit-mask-image: linear-gradient(to bottom, white 85%, transparent 100%), repeating-linear-gradient(45deg, rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5) 15px, transparent 15px, transparent 30px);
+          mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(85%, white), to(transparent)), repeating-linear-gradient(45deg, rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5) 15px, transparent 15px, transparent 30px);
+          mask-image: linear-gradient(to bottom, white 85%, transparent 100%), repeating-linear-gradient(45deg, rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5) 15px, transparent 15px, transparent 30px);
 }
 .prices .price-info a {
   text-decoration: none;
@@ -882,10 +884,12 @@ header.hero-video .toggle-background {
 }
 
 @media (min-width: 410px) {
-  .prices .img-xbox {
-    left: 30px;
-    top: -150px;
-    width: 90%;
+  .prices .img-xbox img {
+    height: 400px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: 55% 45%;
+       object-position: 55% 45%;
   }
   .team .swiper {
     margin: 0 45px;
@@ -912,10 +916,6 @@ header.hero-video .toggle-background {
   nav .navbar-brand img {
     width: 200px;
   }
-  .prices .img-xbox {
-    left: 20px;
-    top: -90px;
-  }
   .team .swiper {
     margin: 0 45px;
   }
@@ -932,9 +932,6 @@ header.hero-video .toggle-background {
   }
   .aboutus-hero {
     background-image: url("../assets/platform-big.jpg");
-  }
-  .prices .img-xbox {
-    top: -125px;
   }
   .team {
     background-image: url("../assets/team/meeting-room-big.jpg");
@@ -961,9 +958,6 @@ header.hero-video .toggle-background {
 @media (min-width: 1200px) {
   header.hero-img {
     background-image: url("../assets/hero-big.jpg");
-  }
-  .prices .img-xbox {
-    top: -90px;
   }
   .team .card img {
     height: 180px;
