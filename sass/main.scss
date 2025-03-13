@@ -14,7 +14,6 @@ body {
 	font-family: 'Montserrat', serif;
 	font-optical-sizing: auto;
 	background-color: $bg-color;
-	overflow-x: hidden;
 }
 
 .blue-text {
@@ -763,6 +762,18 @@ header.hero-video {
 			background-color: $main-color;
 		}
 	}
+}
+
+.footer a {
+	color: #ffcc00;
+	text-decoration: none;
+	font-weight: bold;
+	transition: color 0.3s;
+}
+
+.footer a:hover {
+	color: #ff9900;
+	text-decoration: underline;
 }
 
 @media (min-width: 410px) {

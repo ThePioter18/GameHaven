@@ -13,7 +13,6 @@ body {
   font-family: "Montserrat", serif;
   font-optical-sizing: auto;
   background-color: #ebecf2;
-  overflow-x: hidden;
 }
 
 .blue-text {
@@ -881,6 +880,19 @@ header.hero-video .toggle-background {
 }
 .contact form .btn-primary:hover {
   background-color: #039dff;
+}
+
+.footer a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #ff9900;
+  text-decoration: underline;
 }
 
 @media (min-width: 410px) {

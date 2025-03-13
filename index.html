@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg position-fixed top-0 w-100">
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="82">
+    <nav id="navbar" class="navbar navbar-expand-lg position-fixed top-0 w-100">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="./assets/logoGameHaven.png" alt="logo strony GameHaven">
@@ -729,11 +729,24 @@
             </div>
         </section>
 
-        <footer class="bg-dark text-light py-4 text-center">
-            <p class="mb-0">
-                &copy; 2025 | GameHaven
-            </p>
+        <footer class="footer bg-dark text-light py-4 text-center">
+            <div class="footer-copyright">
+                <p class="footer__copyright-text">
+                    &copy; <span class="footer-year"></span> | GameHaven
+                </p>
+                <p class="footer__creator">
+                    Stworzone przez
+                    <a href="https://github.com/ThePioter18" target="_blank" rel="noopener noreferrer">
+                        <i class="ti ti-brand-github"></i> PiotrWebWorks
+                    </a>
+                    |
+                    <a href="https://github.com/ThePioter18/GameHaven" target="_blank" rel="noopener noreferrer">
+                        <i class="ti ti-code"></i> Repozytorium
+                    </a>
+                </p>
+            </div>
         </footer>
+
 
     </main>
 
@@ -743,6 +756,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/current-year.js"></script>
     <script src="/js/aos-animations.js"></script>
     <script src="./js/swiper.js"></script>
     <script src="./js/video.js"></script>
