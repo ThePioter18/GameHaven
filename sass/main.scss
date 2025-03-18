@@ -419,6 +419,28 @@ header.hero-video {
 		p {
 			color: $dark-gray;
 		}
+
+		.btn-reservation {
+			position: relative;
+			padding: 10px 20px;
+			border-radius: 4px;
+			display: inline-block;
+			text-align: center;
+			color: $btn-date-color;
+			background-color: $price-color;
+			transition: all 200ms linear;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 1.2;
+			letter-spacing: 1px;
+			text-decoration: none;
+			transition: background-color 0.3s ease-in-out;
+
+			&:hover {
+				color: $price-color;
+				background-color: $btn-date-color;
+			}
+		}
 	}
 
 	.price-box:hover {
@@ -483,28 +505,6 @@ header.hero-video {
 		84% {
 			border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
 		}
-	}
-
-	.link {
-		position: relative;
-		padding: 10px 20px;
-		border-radius: 4px;
-		display: inline-block;
-		text-align: center;
-		color: $link-date-color;
-		background-color: $price-color;
-		transition: all 200ms linear;
-		font-weight: 500;
-		font-size: 14px;
-		line-height: 1.2;
-		letter-spacing: 1px;
-		text-decoration: none;
-		transition: background-color 0.3s ease-in-out;
-	}
-
-	.link:hover {
-		color: $price-color;
-		background-color: $link-date-color;
 	}
 
 	.img-wrap img {
