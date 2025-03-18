@@ -501,6 +501,28 @@ header.hero-video .toggle-background {
 .prices .price-box p {
   color: #212529;
 }
+.prices .price-box .btn-reservation {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  color: #ffeba7;
+  background-color: #102770;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  text-decoration: none;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+.prices .price-box .btn-reservation:hover {
+  color: #102770;
+  background-color: #ffeba7;
+}
 .prices .price-box:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
@@ -584,28 +606,6 @@ header.hero-video .toggle-background {
   84% {
     border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
   }
-}
-.prices .link {
-  position: relative;
-  padding: 10px 20px;
-  border-radius: 4px;
-  display: inline-block;
-  text-align: center;
-  color: #ffeba7;
-  background-color: #102770;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.2;
-  letter-spacing: 1px;
-  text-decoration: none;
-  -webkit-transition: background-color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
-}
-.prices .link:hover {
-  color: #102770;
-  background-color: #ffeba7;
 }
 .prices .img-wrap img {
   display: block;

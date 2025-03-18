@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
@@ -346,8 +347,10 @@
                                 <li>99zł / 8h</li>
                             </ul>
                             <p class="accessories">Akcesoria PC: w cenie</p>
-                            <a href="#rezerwacja" class="link" aria-label="Przejdź do rezerwacji stanowiska">Wybierz
-                                datę</a>
+
+                            <button class="btn-reservation" data-bs-toggle="modal" data-bs-target="#reservationModal"
+                                onclick="setReservation(18, 'PC')">Wybierz
+                                datę</button>
 
                             <div class="img-wrap img-pc">
                                 <img src="assets/img-prices/woman-small.jpg"
@@ -368,8 +371,10 @@
                             </ul>
                             <p class="pad">Dodatkowy pad: +5zł</p>
 
-                            <a href="#rezerwacja" class="link" aria-label="Przejdź do rezerwacji stanowiska">Wybierz
-                                datę</a>
+                            <button class="btn-reservation" data-bs-toggle="modal" data-bs-target="#reservationModal"
+                                onclick="setReservation(15, 'PS')">Wybierz
+                                datę</button>
+
                             <div class="img-wrap img-ps">
                                 <img src="assets/img-prices/soccer-small.png" alt="Piłka na trawie">
                             </div>
@@ -387,8 +392,10 @@
                             </ul>
                             <p class="pad">Dodatkowy pad: +5zł</p>
 
-                            <a href="#rezerwacja" class="link" aria-label="Przejdź do rezerwacji stanowiska">Wybierz
-                                datę</a>
+                            <button class="btn-reservation" data-bs-toggle="modal" data-bs-target="#reservationModal"
+                                onclick="setReservation(15, 'XBOX')">Wybierz
+                                datę</button>
+
                             <div class="img-wrap img-xbox">
                                 <img src="assets/img-prices/jaime-marrero-unsplash.jpg" alt="Stanowisko Xbox">
                             </div>
@@ -408,7 +415,71 @@
                 </p>
             </div>
 
+            <!-- Modal Calendar -->
+            <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="reservationModalLabel">Rezerwacja gry</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="reservationForm">
+                                <p><strong>Platforma:</strong> <span id="selectedPlatform"></span></p>
+
+                                <p>
+                                    <strong>Usługa:</strong>
+                                    <select id="timeSelection" class="form-select form-select-sm d-inline-block ms-2"
+                                        style="width: auto;">
+                                    </select>
+                                </p>
+
+                                <p><strong>Dodatki:</strong> <span id="accessoriesPrice"></span> zł</p>
+                                <p><strong>Cena razem:</strong> <span id="totalPrice"></span> zł</p>
+
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Imię i nazwisko:</label>
+                                    <input type="text" id="name" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Adres e-mail:</label>
+                                    <input type="email" id="email" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="datePicker" class="form-label">Wybierz datę i godzinę:</label>
+                                    <input type="text" id="datePicker" class="form-control" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-success w-100" id="reserveButton"
+                                    disabled>Zarezerwuj i
+                                    zapłać</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirmation Modal -->
+            <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmationModalLabel">Potwierdzenie</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-success">Rezerwacja opłacona i potwierdzona!</p>
+                            <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
+
+
 
         <section id="team" class="team py-5 bg-light">
             <h2 class="section-title">zespół</h2>
@@ -754,13 +825,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="./js/reservation.js"></script>
+    <script src="./js/current-year.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="./js/current-year.js"></script>
     <script src="/js/aos-animations.js"></script>
     <script src="./js/swiper.js"></script>
     <script src="./js/video.js"></script>
     <script src="./js/main.js"></script>
+
 </body>
 
 </html>
