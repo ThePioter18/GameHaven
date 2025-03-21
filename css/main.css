@@ -641,6 +641,13 @@ header.hero-video .toggle-background {
 .prices .price-info a {
   text-decoration: none;
 }
+.prices .flatpickr-calendar.static.open {
+  max-width: 300px;
+  min-width: 200px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
 
 .team {
   position: relative;
@@ -936,6 +943,27 @@ header.hero-video .toggle-background {
   }
   .contact form {
     width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  .prices .flatpickr-calendar.static.open {
+    width: 90%;
+    max-width: 300px;
+    font-size: 14px;
+  }
+  .prices .flatpickr-calendar .flatpickr-days {
+    width: 100%;
+  }
+  .prices .flatpickr-calendar .dayContainer {
+    width: 100%;
+    min-width: auto;
+  }
+  .prices .flatpickr-calendar .flatpickr-day {
+    height: 32px;
+    line-height: 32px;
+    margin: 1px;
+    max-width: 32px;
+    width: 32px;
   }
 }
 @media (min-width: 992px) {
