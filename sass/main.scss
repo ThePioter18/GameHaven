@@ -539,6 +539,13 @@ header.hero-video {
 			text-decoration: none;
 		}
 	}
+
+	.flatpickr-calendar.static.open {
+		max-width: 300px;
+		min-width: 200px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 }
 
 .team {
@@ -824,7 +831,6 @@ header.hero-video {
 			}
 		}
 	}
-
 	.team {
 		.swiper {
 			margin: 0 45px;
@@ -839,6 +845,33 @@ header.hero-video {
 	.contact {
 		form {
 			width: 90%;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.prices {
+		.flatpickr-calendar.static.open {
+			width: 90%;
+			max-width: 300px;
+			font-size: 14px;
+		}
+
+		.flatpickr-calendar .flatpickr-days {
+			width: 100%;
+		}
+
+		.flatpickr-calendar .dayContainer {
+			width: 100%;
+			min-width: auto;
+		}
+
+		.flatpickr-calendar .flatpickr-day {
+			height: 32px;
+			line-height: 32px;
+			margin: 1px;
+			max-width: 32px;
+			width: 32px;
 		}
 	}
 }
