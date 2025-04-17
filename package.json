@@ -1,0 +1,27 @@
+{
+	"name": "gamehaven",
+	"version": "1.0.0",
+	"description": "Website for GameHaven",
+	"main": "index.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ThePioter18/GameHaven.git"
+	},
+	"keywords": [],
+	"author": "Piotr Rucki",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ThePioter18/GameHaven/issues"
+	},
+	"homepage": "https://github.com/ThePioter18/GameHaven#readme",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.4.7",
+		"express": "^4.21.2",
+		"mongodb": "^6.15.0",
+		"mongoose": "^8.12.2"
+	}
+}

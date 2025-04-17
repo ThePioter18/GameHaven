@@ -546,6 +546,86 @@ header.hero-video {
 		left: 50%;
 		transform: translateX(-50%);
 	}
+	/* Hide the minutes and seconds inputs */
+	.flatpickr-time .numInputWrapper:nth-child(3),
+	.flatpickr-time .flatpickr-time-separator {
+		display: none;
+	}
+
+	/* Changing the size of the arrow in the flatpickr for time selection */
+	.flatpickr-calendar.hasTime .flatpickr-time,
+	.flatpickr-time .numInputWrapper {
+		height: 70px;
+	}
+	.flatpickr-time input {
+		font-size: 18px;
+	}
+	.flatpickr-time {
+		max-height: 70px;
+	}
+	.numInputWrapper span {
+		width: 40px;
+	}
+	.flatpickr-time .numInputWrapper span.arrowUp:after,
+	.flatpickr-time .numInputWrapper span.arrowDown:after {
+		width: 10px;
+		height: auto;
+		margin: auto 12px;
+	}
+
+	.date-picker-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		.form-label {
+			margin-top: 5px;
+		}
+
+		.date-error {
+			flex: 0 0 100%;
+			text-align: end;
+		}
+	}
+
+	.modal-body {
+		.invalid-feedback {
+			margin-top: 0.5rem;
+		}
+	}
+
+	.occupancyList li {
+		border-bottom: 1px solid #eee;
+		padding: 8px 0;
+	}
+
+	.occupancyList li:last-child {
+		border-bottom: none;
+	}
+
+	.loadingIndicator {
+		color: #0d6efd;
+		font-size: 0.9rem;
+	}
+
+	.disabled-time {
+		color: #adb5bd;
+		background-color: #f8f9fa;
+		opacity: 0.7;
+	}
+
+	.disabled-time .fa-lock {
+		margin-left: 5px;
+		font-size: 0.8em;
+	}
+
+	.custom-info {
+		color: #856404;
+		background-color: #fff3cd;
+		border: 1px solid #ffeeba;
+		padding: 0.75rem;
+		border-radius: 0.25rem;
+	}
 }
 
 .team {
