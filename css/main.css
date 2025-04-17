@@ -473,6 +473,10 @@ header.hero-video .toggle-background {
   padding-left: 20px;
 }
 
+.prices {
+  /* Hide the minutes and seconds inputs */
+  /* Changing the size of the arrow in the flatpickr for time selection */
+}
 .prices .price-box {
   position: relative;
   margin: 20px;
@@ -647,6 +651,78 @@ header.hero-video .toggle-background {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+.prices .flatpickr-time .numInputWrapper:nth-child(3),
+.prices .flatpickr-time .flatpickr-time-separator {
+  display: none;
+}
+.prices .flatpickr-calendar.hasTime .flatpickr-time,
+.prices .flatpickr-time .numInputWrapper {
+  height: 70px;
+}
+.prices .flatpickr-time input {
+  font-size: 18px;
+}
+.prices .flatpickr-time {
+  max-height: 70px;
+}
+.prices .numInputWrapper span {
+  width: 40px;
+}
+.prices .flatpickr-time .numInputWrapper span.arrowUp:after,
+.prices .flatpickr-time .numInputWrapper span.arrowDown:after {
+  width: 10px;
+  height: auto;
+  margin: auto 12px;
+}
+.prices .date-picker-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.prices .date-picker-container .form-label {
+  margin-top: 5px;
+}
+.prices .date-picker-container .date-error {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  text-align: end;
+}
+.prices .modal-body .invalid-feedback {
+  margin-top: 0.5rem;
+}
+.prices .occupancyList li {
+  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+}
+.prices .occupancyList li:last-child {
+  border-bottom: none;
+}
+.prices .loadingIndicator {
+  color: #0d6efd;
+  font-size: 0.9rem;
+}
+.prices .disabled-time {
+  color: #adb5bd;
+  background-color: #f8f9fa;
+  opacity: 0.7;
+}
+.prices .disabled-time .fa-lock {
+  margin-left: 5px;
+  font-size: 0.8em;
+}
+.prices .custom-info {
+  color: #856404;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
 }
 
 .team {
