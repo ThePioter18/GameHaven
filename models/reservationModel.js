@@ -10,6 +10,15 @@ const reservationSchema = new mongoose.Schema(
 		platform: String, // PC, PS, XBOX
 		price: Number,
 		status: { type: String, enum: ['pending', 'confirmed', 'cancelled', 'completed'], default: 'pending' },
+		expiresAt: {
+			type: Date,
+			default: function () {
+				const endDate = new Date(this.date);
+				endDate.setHours(endDate.getHours() + this.duration);
+				return endDate;
+			},
+			index: { expireAfterSeconds: 0 }, // TTL INDEX
+		},
 	},
 	{ versionKey: false }
 );
