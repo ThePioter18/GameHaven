@@ -21,7 +21,9 @@
 		"cors": "^2.8.5",
 		"dotenv": "^16.4.7",
 		"express": "^4.21.2",
+		"global-agent": "^3.0.0",
 		"mongodb": "^6.15.0",
-		"mongoose": "^8.12.2"
+		"mongoose": "^8.12.2",
+		"nodemailer": "^6.10.1"
 	}
 }
