@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config');
 const reservationRoutes = require('./routes/reservationRoutes');
+const contactRoutes = require('./routes/contactRoutes');
 const path = require('path');
 
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Routes API
 app.use('/api', reservationRoutes);
+app.use('/api', contactRoutes);
 
 app.use(express.static(path.join(__dirname)));
 
