@@ -39,8 +39,6 @@ router.get('/occupancy', async (req, res) => {
 
 router.post('/reservations', async (req, res) => {
 	try {
-		console.log('Przychodzące dane rezerwacji:', req.body);
-
 		const { date, platform, duration } = req.body;
 
 		const OPENING_HOUR = 8;
