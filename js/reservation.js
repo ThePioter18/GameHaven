@@ -306,6 +306,8 @@ function resetReservationForm() {
 	document.getElementById('dateError').style.display = 'none';
 }
 
+const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://gamehaven.up.railway.app';
+
 document.getElementById('reservationForm').addEventListener('submit', async function (event) {
 	event.preventDefault();
 
@@ -334,7 +336,7 @@ document.getElementById('reservationForm').addEventListener('submit', async func
 		};
 
 		try {
-			const response = await fetch('http://localhost:5000/api/reservations', {
+			const response = await fetch(`${baseURL}/api/reservations}`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -383,7 +385,7 @@ async function loadOccupancyInfo(date, platform) {
 
 	try {
 		const response = await fetch(
-			`http://localhost:5000/api/occupancy?date=${encodeURIComponent(date)}&platform=${encodeURIComponent(platform)}`
+			`${baseURL}/api/occupancy?date=${encodeURIComponent(date)}&platform=${encodeURIComponent(platform)}`
 		);
 
 		if (!response.ok) {
