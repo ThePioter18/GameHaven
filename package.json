@@ -4,8 +4,7 @@
 	"description": "Website for GameHaven",
 	"main": "index.js",
 	"scripts": {
-		"start": "node server.js",
-		"generate-config": "node generate-config.js"
+		"start": "node server.js"
 	},
 	"repository": {
 		"type": "git",
