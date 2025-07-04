@@ -1041,6 +1041,9 @@ header.hero-video .toggle-background {
     max-width: 32px;
     width: 32px;
   }
+  .prices .numInputWrapper span {
+    opacity: 1;
+  }
 }
 @media (min-width: 992px) {
   html {

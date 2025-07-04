@@ -1,3 +1,5 @@
+import CONFIG from '../config/config-client.js';
+
 document.addEventListener('DOMContentLoaded', () => {
 	const form = document.getElementById('contact-form-id');
 
@@ -7,10 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const email = form.email.value;
 		const message = form.message.value;
 
-		const baseURL =
-			process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://gamehaven.up.railway.app';
-
-		const res = await fetch(`${baseURL}/api/contact}`, {
+		const res = await fetch(`${CONFIG.baseURL}/api/contact`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ email, message }),

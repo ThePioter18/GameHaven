@@ -16,6 +16,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="css/main.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="82">
@@ -312,14 +317,13 @@
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                         data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"><i
-                                class="ti ti-circle-chevron-left-filled"></i></i>
+                        <span class="carousel-control-prev-icon"><i class="ti ti-circle-chevron-left-filled"></i></i>
                         </span>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
                         data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"><i
+                        <span class="carousel-control-next-icon"><i
                                 class="ti ti-circle-chevron-right-filled"></i></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -416,8 +420,7 @@
             </div>
 
             <!-- Modal Calendar -->
-            <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -490,8 +493,7 @@
             </div>
 
             <!-- Confirmation Modal -->
-            <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -507,8 +509,6 @@
             </div>
 
         </section>
-
-
 
         <section id="team" class="team py-5 bg-light">
             <h2 class="section-title">zespół</h2>
@@ -855,8 +855,9 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="js/reservation.js"></script>
-    <script src="js/contact.js"></script>
+    <script type="module" src="config/config-client.js"></script>
+    <script type="module" src="js/reservation.js"></script>
+    <script type="module" src="js/contact.js"></script>
     <script src="js/current-year.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
