@@ -1,9 +1,11 @@
+import CONFIG from '../config/config-client.js';
+
 // Selected price
 let selectedPrice = 0;
 // Track date picker interaction
 let datePickerTouched = false;
 
-function setReservation(price, platform) {
+export function setReservation(price, platform) {
 	selectedPrice = price;
 	document.getElementById('selectedPlatform').textContent = platform; // show platform name
 
@@ -14,6 +16,7 @@ function setReservation(price, platform) {
 	// Generate options for the selected platform
 	generateTimeOptions(platform);
 }
+window.setReservation = setReservation;
 
 // Function generate time options
 function generateTimeOptions(platform) {
@@ -306,7 +309,8 @@ function resetReservationForm() {
 	document.getElementById('dateError').style.display = 'none';
 }
 
-const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://gamehaven.up.railway.app';
+const reservationModal = document.getElementById('reservationModal');
+const confirmationModal = document.getElementById('confirmationModal');
 
 document.getElementById('reservationForm').addEventListener('submit', async function (event) {
 	event.preventDefault();
@@ -336,7 +340,7 @@ document.getElementById('reservationForm').addEventListener('submit', async func
 		};
 
 		try {
-			const response = await fetch(`${baseURL}/api/reservations}`, {
+			const response = await fetch(`${CONFIG.baseURL}/api/reservations`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -348,10 +352,17 @@ document.getElementById('reservationForm').addEventListener('submit', async func
 
 			if (response.ok) {
 				let modal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
-				modal.hide();
-				new bootstrap.Modal(document.getElementById('confirmationModal')).show();
 
-				resetReservationForm();
+				// Moving the focus before closing the modal
+				document.body.setAttribute('tabindex', '-1');
+				document.body.focus();
+
+				// Allow time to move focus
+				setTimeout(() => {
+					modal.hide();
+					resetReservationForm();
+					new bootstrap.Modal(document.getElementById('confirmationModal')).show();
+				}, 10);
 			} else {
 				errorEl.innerText = `Błąd: ${data.message}`;
 			}
@@ -363,13 +374,60 @@ document.getElementById('reservationForm').addEventListener('submit', async func
 	}
 });
 
-// Added also clearing when closing the reservation modal
-document.getElementById('reservationModal').addEventListener('hidden.bs.modal', function () {
-	resetReservationForm();
-	errorEl.innerText = '';
-	infoEl.innerText = '';
-	infoEl.classList.add('d-none');
-});
+// Auxiliary function to handle focus
+function moveFocusToBody() {
+	document.body.setAttribute('tabindex', '-1');
+	document.body.focus();
+}
+
+// Function to configure the modal in terms of accessibility
+function setupModalAccessibility(modalElement) {
+	// Modal closing event handling
+	modalElement.addEventListener('hide.bs.modal', function () {
+		moveFocusToBody();
+
+		// Actions for reservation modal
+		if (modalElement.id === 'reservationModal') {
+			resetReservationForm();
+			if (errorEl) errorEl.innerText = '';
+			if (infoEl) {
+				infoEl.innerText = '';
+				infoEl.classList.add('d-none');
+			}
+		}
+	});
+
+	// Additional security after closing
+	modalElement.addEventListener('hidden.bs.modal', function () {
+		moveFocusToBody();
+	});
+
+	// Replace aria-hidden with inert attribute
+	modalElement.addEventListener('hide.bs.modal', function () {
+		setTimeout(() => {
+			this.removeAttribute('aria-hidden');
+			this.setAttribute('inert', '');
+		}, 0);
+	});
+
+	modalElement.addEventListener('show.bs.modal', function () {
+		this.removeAttribute('inert');
+	});
+
+	// Support for closing buttons in this modal
+	const closeButtons = modalElement.querySelectorAll('[data-bs-dismiss="modal"]');
+	closeButtons.forEach(button => {
+		button.addEventListener('mousedown', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			moveFocusToBody();
+		});
+	});
+}
+
+if (reservationModal) setupModalAccessibility(reservationModal);
+if (confirmationModal) setupModalAccessibility(confirmationModal);
+////
 
 // Function loading availability
 async function loadOccupancyInfo(date, platform) {
@@ -385,7 +443,7 @@ async function loadOccupancyInfo(date, platform) {
 
 	try {
 		const response = await fetch(
-			`${baseURL}/api/occupancy?date=${encodeURIComponent(date)}&platform=${encodeURIComponent(platform)}`
+			`${CONFIG.baseURL}/api/occupancy?date=${encodeURIComponent(date)}&platform=${encodeURIComponent(platform)}`
 		);
 
 		if (!response.ok) {
