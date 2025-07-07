@@ -33,7 +33,7 @@ app.use(express.json());
 app.use('/api', reservationRoutes);
 app.use('/api', contactRoutes);
 
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/env.js', (req, res) => {
 	res.set('Content-Type', 'application/javascript');
