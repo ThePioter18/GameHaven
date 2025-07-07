@@ -35,15 +35,13 @@ app.use('/api', contactRoutes);
 
 app.use(express.static(path.join(__dirname)));
 
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'index.html'));
-});
-
 app.get('/env.js', (req, res) => {
 	res.set('Content-Type', 'application/javascript');
-	res.send(`window.CONFIG = {
-    baseURL: "${process.env.RENDER_API_URL || ''}"
-  };`);
+	res.send(`window.CONFIG = { baseURL: "${process.env.RENDER_API_URL || ''}" };`);
+});
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
