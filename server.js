@@ -10,7 +10,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-const allowedOrigins = ['http://127.0.0.1:5500', 'http://localhost:5500', 'https://gamehaven.netlify.app'];
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
 
 app.use(
 	cors({
@@ -37,6 +37,13 @@ app.use(express.static(path.join(__dirname)));
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/env.js', (req, res) => {
+	res.set('Content-Type', 'application/javascript');
+	res.send(`window.CONFIG = {
+    baseURL: "${process.env.RENDER_API_URL || ''}"
+  };`);
 });
 
 const PORT = process.env.PORT || 5000;
