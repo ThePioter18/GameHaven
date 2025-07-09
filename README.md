@@ -78,4 +78,4 @@ GameHaven/
 
 🖼️ Screenshots
 
-<p align="center"> <img src="./public/assets/screenshots/availability-preview.png" alt="Availability preview" /> <br/> <em>Availability preview – shows hourly availability per platform</em> </p> <p align="center"> <img src="./public/ assets/screenshots/booking-form.png" alt="Booking form" /> <br/> <em>Booking form – allows users to reserve a time slot</em> </p>
+<p align="center"> <img src="./public/assets/screenshots/availability-preview.png" alt="Availability preview" /> <br/> <em>Availability preview – shows hourly availability per platform</em> </p> <p align="center"> <img src="./public/assets/screenshots/booking-form.png" alt="Booking form" /> <br/> <em>Booking form – allows users to reserve a time slot</em> </p>
