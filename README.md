@@ -2,6 +2,15 @@
 
 **GameHaven** is a simple yet functional reservation system designed for game lounges. It allows users to check availability and book gaming stations by the hour. Supported platforms include **PC**, **PlayStation**, and **Xbox**.
 
+## 🌐 Live Demo
+The website is available at:  
+- **Netlify (static frontend):**  
+  ➡️ [https://gamehaven.netlify.app/](https://gamehaven.netlify.app/)
+
+- **Render (Node.js backend + frontend on Render):**  
+  ➡️ [https://gamehaven-fvun.onrender.com/](https://gamehaven-fvun.onrender.com/)
+
+
 ## 🔧 Features
 
 - ✅ Select date and platform (PC, PS, Xbox)
@@ -34,7 +43,7 @@
 git clone https://github.com/ThePioter18/GameHaven.git
 cd GameHaven
 npm install
-npm start
+npm start or node server.js
 ```
 
 ## 🧪 Running the Project
@@ -48,8 +57,7 @@ After `npm start` you should see:
 
 Open index.html from the GameHaven/ folder
 
-Best experience: use Live Server (e.g. in VS Code)
-Or open your browser and go to: http://localhost:5000
+Best experience: open your browser and go to: http://localhost:5000
 
 ### 📁 Project Structure
 
@@ -70,4 +78,4 @@ GameHaven/
 
 🖼️ Screenshots
 
-<p align="center"> <img src="assets/screenshots/availability-preview.png" alt="Availability preview" /> <br/> <em>Availability preview – shows hourly availability per platform</em> </p> <p align="center"> <img src="assets/screenshots/booking-form.png" alt="Booking form" /> <br/> <em>Booking form – allows users to reserve a time slot</em> </p>
+<p align="center"> <img src="./public/assets/screenshots/availability-preview.png" alt="Availability preview" /> <br/> <em>Availability preview – shows hourly availability per platform</em> </p> <p align="center"> <img src="./public/ assets/screenshots/booking-form.png" alt="Booking form" /> <br/> <em>Booking form – allows users to reserve a time slot</em> </p>
