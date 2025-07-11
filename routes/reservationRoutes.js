@@ -11,15 +11,15 @@ router.get('/occupancy', async (req, res) => {
 			return res.status(400).json({ error: 'Brak daty lub platformy' });
 		}
 
-		const startOfDay = new Date(date);
-		startOfDay.setHours(0, 0, 0, 0);
+		const isoDate = date.includes('T') ? date : date.replace(' ', 'T');
+		const dateTime = DateTime.fromISO(isoDate);
 
-		const endOfDay = new Date(date);
-		endOfDay.setHours(23, 59, 59, 999);
-
-		if (!startOfDay.isValid || !endOfDay.isValid) {
+		if (!dateTime.isValid) {
 			return res.status(400).json({ error: 'Nieprawidłowy format daty' });
 		}
+
+		const startOfDay = dateTime.startOf('day').toJSDate();
+		const endOfDay = dateTime.endOf('day').toJSDate();
 
 		const reservations = await Reservation.find({
 			date: { $gte: startOfDay, $lte: endOfDay },
@@ -64,6 +64,8 @@ router.post('/reservations', async (req, res) => {
 			return res.status(400).json({ message: 'Nie można zarezerwować stanowiska w przeszłości.' });
 		}
 
+		const reservationJSDate = reservationDate.toJSDate();
+
 		// Get the hour of the reservation
 		const reservationHourWarsaw = reservationDate.setZone('Europe/Warsaw').hour;
 
@@ -86,11 +88,8 @@ router.post('/reservations', async (req, res) => {
 		}
 
 		// Calculate the date range (all day)
-		const startOfDay = new Date(reservationDate);
-		startOfDay.setHours(0, 0, 0, 0);
-
-		const endOfDay = new Date(reservationDate);
-		endOfDay.setHours(23, 59, 59, 999);
+		const startOfDay = reservationDate.startOf('day').toJSDate();
+		const endOfDay = reservationDate.endOf('day').toJSDate();
 
 		// Get all bookings for the day and platform
 		const sameDayReservations = await Reservation.find({
@@ -130,7 +129,7 @@ router.post('/reservations', async (req, res) => {
 		// Create and save the new reservation
 		const newReservation = new Reservation({
 			...req.body,
-			date: reservationDate,
+			date: reservationJSDate,
 			duration: parseInt(duration),
 			price: parseFloat(req.body.price),
 			status: 'pending',
