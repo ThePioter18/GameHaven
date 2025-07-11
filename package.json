@@ -4,7 +4,8 @@
 	"description": "Website for GameHaven",
 	"main": "index.js",
 	"scripts": {
-		"start": "node server.js"
+		"start": "node server.js",
+		"build": "sass sass/:public/css/ --no-source-map"
 	},
 	"repository": {
 		"type": "git",
@@ -24,6 +25,7 @@
 		"global-agent": "^3.0.0",
 		"mongodb": "^6.15.0",
 		"mongoose": "^8.12.2",
-		"nodemailer": "^6.10.1"
+		"nodemailer": "^6.10.1",
+		"sass": "^1.89.2"
 	}
 }
