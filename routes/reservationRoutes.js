@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Reservation = require('../models/reservationModel');
+const { DateTime } = require('luxon');
 
 router.get('/occupancy', async (req, res) => {
 	try {
@@ -16,7 +17,7 @@ router.get('/occupancy', async (req, res) => {
 		const endOfDay = new Date(date);
 		endOfDay.setHours(23, 59, 59, 999);
 
-		if (isNaN(startOfDay.getTime()) || isNaN(endOfDay.getTime())) {
+		if (!startOfDay.isValid || !endOfDay.isValid) {
 			return res.status(400).json({ error: 'Nieprawidłowy format daty' });
 		}
 
@@ -52,8 +53,9 @@ router.post('/reservations', async (req, res) => {
 		}
 
 		// Conversion of date to Date object
-		const reservationDate = new Date(date);
-		if (isNaN(reservationDate.getTime())) {
+		const reservationDate = DateTime.fromISO(date, { zone: 'utc' });
+
+		if (!reservationDate.isValid) {
 			return res.status(400).json({ message: 'Nieprawidłowy format daty' });
 		}
 
@@ -63,20 +65,21 @@ router.post('/reservations', async (req, res) => {
 		}
 
 		// Get the hour of the reservation
-		const reservationHour = reservationDate.getHours();
-		if (reservationHour < 0 || reservationHour > 23) {
+		const reservationHourWarsaw = reservationDate.setZone('Europe/Warsaw').hour;
+
+		if (reservationHourWarsaw < 0 || reservationHourWarsaw > 23) {
 			return res.status(400).json({ message: 'Nieprawidłowa godzina rezerwacji.' });
 		}
 
 		// Validation of opening hours
-		if (reservationHour < OPENING_HOUR || reservationHour >= CLOSING_HOUR) {
+		if (reservationHourWarsaw < OPENING_HOUR || reservationHourWarsaw >= CLOSING_HOUR) {
 			return res.status(400).json({
 				message: `Lokal jest otwarty tylko w godzinach ${OPENING_HOUR}:00-${CLOSING_HOUR}:00`,
 			});
 		}
 
 		// Check if reservation exceeds opening hours
-		if (reservationHour + parseInt(duration) > CLOSING_HOUR) {
+		if (reservationHourWarsaw + parseInt(duration) > CLOSING_HOUR) {
 			return res.status(400).json({
 				message: `Rezerwacja wykracza poza godziny otwarcia. Maksymalny czas do ${CLOSING_HOUR}:00`,
 			});
@@ -99,13 +102,13 @@ router.post('/reservations', async (req, res) => {
 		// Create a map of busy hours
 		const hourlyCount = Array(23).fill(0);
 		sameDayReservations.forEach(res => {
-			const resDate = new Date(res.date);
-			const resHour = resDate.getHours();
+			const resDate = DateTime.fromJSDate(res.date).setZone('Europe/Warsaw');
+			const resHour = resDate.hour;
 			const resDuration = parseInt(res.duration) || 1;
 
 			for (let i = 0; i < resDuration; i++) {
 				const hour = resHour + i;
-				if (hour < 23) {
+				if (hour < CLOSING_HOUR) {
 					hourlyCount[hour]++;
 				}
 			}
@@ -113,8 +116,8 @@ router.post('/reservations', async (req, res) => {
 
 		// Check if reservation exceeds opening hours
 		for (let i = 0; i < duration; i++) {
-			const hour = reservationHour + i;
-			if (hour >= 23) {
+			const hour = reservationHourWarsaw + i;
+			if (hour >= CLOSING_HOUR) {
 				return res.status(400).json({ message: 'Rezerwacja wykracza poza godziny otwarcia.' });
 			}
 			if (hourlyCount[hour] >= limits[platform]) {
