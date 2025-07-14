@@ -822,6 +822,8 @@ header.hero-video {
 
 	.map-container {
 		iframe {
+			width: 100%;
+			height: 300px;
 			border-radius: 8px;
 			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 		}
@@ -850,7 +852,6 @@ header.hero-video {
 		}
 	}
 }
-
 .footer a {
 	color: #ffcc00;
 	text-decoration: none;

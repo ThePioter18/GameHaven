@@ -103,7 +103,7 @@ function updateTotalPrice() {
 // Track which fields were touched by user
 const touchedFields = {
 	name: false,
-	email: false,
+	reservationEmail: false,
 	phone: false,
 	date: false,
 };
@@ -111,7 +111,7 @@ const touchedFields = {
 // Form validation function
 function validateForm(validateAll = false) {
 	const name = document.getElementById('name').value.trim();
-	const email = document.getElementById('email').value.trim();
+	const reservationEmail = document.getElementById('reservationEmail').value.trim();
 	const phone = document.getElementById('phone').value.trim();
 	const date = document.getElementById('datePicker').value.trim();
 	const reserveButton = document.getElementById('reserveButton');
@@ -137,18 +137,23 @@ function validateForm(validateAll = false) {
 		}
 	}
 	// Validate email only if touched or validateAll is true
-	if (touchedFields.email || validateAll) {
+	if (touchedFields.reservationEmail || validateAll) {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		const emailInput = document.getElementById('reservationEmail');
+		const email = emailInput.value.trim();
+		const errorEl = document.getElementById('emailError');
+
 		if (email === '') {
 			valid = false;
-			document.getElementById('email').classList.add('is-invalid');
-			document.getElementById('emailError').textContent = 'To pole jest wymagane';
+			emailInput.classList.add('is-invalid');
+			errorEl.textContent = 'To pole jest wymagane';
 		} else if (!emailRegex.test(email)) {
 			valid = false;
-			document.getElementById('email').classList.add('is-invalid');
-			document.getElementById('emailError').textContent = 'Proszę podać poprawny adres email (np. przyklad@domena.pl)';
+			emailInput.classList.add('is-invalid');
+			errorEl.textContent = 'Proszę podać poprawny adres email (np. przyklad@domena.pl)';
 		} else {
-			document.getElementById('email').classList.remove('is-invalid');
+			emailInput.classList.remove('is-invalid');
+			errorEl.textContent = '';
 		}
 	}
 
@@ -253,7 +258,7 @@ document.getElementById('datePicker').addEventListener('focus', function () {
 });
 
 // Track field interactions
-['name', 'email', 'phone', 'datePicker'].forEach(id => {
+['name', 'reservationEmail', 'phone', 'datePicker'].forEach(id => {
 	const field = document.getElementById(id);
 
 	field.addEventListener('focus', () => {
@@ -284,12 +289,12 @@ document.getElementById('phone').addEventListener('input', function (event) {
 // Function clearing the form
 function resetReservationForm() {
 	document.getElementById('name').value = '';
-	document.getElementById('email').value = '';
+	document.getElementById('reservationEmail').value = '';
 	document.getElementById('phone').value = '';
 	document.getElementById('datePicker').value = '';
 
 	// Resetting errors
-	['name', 'email', 'phone', 'datePicker'].forEach(id => {
+	['name', 'reservationEmail', 'phone', 'datePicker'].forEach(id => {
 		document.getElementById(id).classList.remove('is-invalid');
 	});
 
@@ -320,7 +325,7 @@ document.getElementById('reservationForm').addEventListener('submit', async func
 	// Only proceed if form is valid
 	if (!document.getElementById('reserveButton').disabled) {
 		const name = document.getElementById('name').value;
-		const email = document.getElementById('email').value;
+		const reservationEmail = document.getElementById('reservationEmail').value;
 		const phone = document.getElementById('phone').value;
 		const dateInput = document.getElementById('datePicker').value;
 		const duration = document.getElementById('timeSelection').value;
@@ -331,7 +336,7 @@ document.getElementById('reservationForm').addEventListener('submit', async func
 
 		const reservationData = {
 			name,
-			email,
+			reservationEmail,
 			phone,
 			date,
 			duration,
