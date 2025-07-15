@@ -194,8 +194,28 @@ function getRoundedCurrentHour() {
 	return now;
 }
 
+let flatpickrLoaded = false;
+
+document.addEventListener('DOMContentLoaded', () => {
+	const dateInput = document.querySelector('#datePicker');
+
+	if (!dateInput) return;
+
+	dateInput.addEventListener('focus', async () => {
+		if (flatpickrLoaded) return;
+
+		const { default: flatpickr } = await import('https://cdn.skypack.dev/flatpickr');
+
+		flatpickrLoaded = true;
+
+		window.flatpickr = flatpickr;
+
+		initializeFlatpickr(flatpickr);
+	});
+});
+
 // Flatpickr initialisation
-function initializeFlatpickr() {
+function initializeFlatpickr(flatpickr) {
 	return flatpickr('#datePicker', {
 		enableTime: true,
 		noCalendar: false,
@@ -249,8 +269,6 @@ function initializeFlatpickr() {
 		onClose: validateForm,
 	});
 }
-
-let datePicker = initializeFlatpickr();
 
 // Date field click support
 document.getElementById('datePicker').addEventListener('focus', function () {

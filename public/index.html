@@ -20,6 +20,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preload .woff2 -->
+    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/montserrat/v30/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2"
+        type="font/woff2" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 
@@ -509,7 +512,8 @@
                                 </div>
                                 <div class="mb-3 date-picker-container">
                                     <label for="datePicker" class="form-label">Wybierz datę i godzinę:</label>
-                                    <input type="date" id="datePicker" class="form-control" autocomplete="off" required>
+                                    <input type="text" id="datePicker" class="form-control" autocomplete="off" required
+                                        placeholder="Wybierz datę">
                                     <div class="invalid-feedback date-error" id="dateError">Proszę wybrać datę</div>
                                 </div>
 
@@ -905,9 +909,6 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
         defer></script>
 
-    <script type="module">
-        import flatpickr from 'https://cdn.skypack.dev/flatpickr';
-    </script>
     <script src="https://gamehaven-fvun.onrender.com/env.js" defer></script>
 
     <script type="module" src="/config/config-client.js"></script>
