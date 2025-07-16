@@ -179,11 +179,34 @@ nav {
 	cursor: pointer;
 }
 
+// Mixin only for setting background-image with webp support
+@mixin background-image-webp($image, $webp: null) {
+	@if $webp {
+		background-image: image-set(url(#{$webp}) type('image/webp') 1x, url(#{$image}) type('image/jpeg') 1x);
+	} @else {
+		background-image: url(#{$image});
+	}
+}
+
+// Mixin for aboutus-hero background images
+@mixin background-aboutus-hero($image, $webp: null) {
+	position: relative;
+
+	@include background-image-webp($image, $webp);
+
+	background-size: cover;
+	background-position: center;
+	color: $light-gray;
+	z-index: 0;
+}
+
 // Mixin for background images
-@mixin background-hero($image) {
+@mixin background-hero($image, $webp: null) {
 	position: relative;
 	height: 100vh;
-	background-image: url($image);
+
+	@include background-image-webp($image, $webp);
+
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
@@ -192,7 +215,7 @@ nav {
 }
 
 header.hero-img {
-	@include background-hero('../assets/hero-small.jpg');
+	@include background-hero('../assets/hero-small.jpg', '../assets/hero-small.webp');
 
 	.hero-text {
 		@include hero-section;
@@ -281,12 +304,7 @@ header.hero-video {
 }
 
 .aboutus-hero {
-	position: relative;
-	background-image: url('../assets/platform-small.jpg');
-	background-size: cover;
-	background-position: center;
-	color: $light-gray;
-	z-index: 0;
+	@include background-aboutus-hero('../assets/platform-small.jpg', '../assets/platform-small.webp');
 
 	.aboutus-shadow {
 		position: absolute;
@@ -975,7 +993,7 @@ header.hero-video {
 		scroll-padding-top: 176px;
 	}
 	.aboutus-hero {
-		background-image: url('../assets/platform-big.jpg');
+		@include background-aboutus-hero('../assets/platform-big.jpg', '../assets/platform-big.webp');
 	}
 
 	.team {
@@ -1006,7 +1024,7 @@ header.hero-video {
 
 @media (min-width: 1200px) {
 	header.hero-img {
-		background-image: url('../assets/hero-big.jpg');
+		@include background-hero('../assets/hero-big.jpg', '../assets/hero-big.webp');
 	}
 
 	.team {
@@ -1045,7 +1063,7 @@ header.hero-video {
 }
 @media (max-width: 1200px) {
 	header.hero-video {
-		@include background-hero('../assets/hero-small.jpg');
+		@include background-hero('../assets/hero-small.jpg', '../assets/hero-small.webp');
 
 		video {
 			display: none;
