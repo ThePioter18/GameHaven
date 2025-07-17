@@ -73,7 +73,7 @@ nav {
 
 	.navbar-brand {
 		img {
-			width: 150px;
+			width: 200px;
 		}
 
 		transition: box-shadow 0.3s ease-in-out;
@@ -334,9 +334,9 @@ header.hero-video {
 	object-position: 55% 45%;
 }
 
-@mixin add-image-with-shadow($image, $shadow) {
+@mixin add-image-with-shadow($image, $webp: null, $shadow) {
 	position: relative;
-	background-image: url($image);
+	@include background-image-webp($image, $webp);
 	background-size: cover;
 	background-attachment: fixed;
 	z-index: 0;
@@ -656,7 +656,11 @@ header.hero-video {
 }
 
 .team {
-	@include add-image-with-shadow('../assets/team/meeting-room-small.jpg', rgba(0, 0, 0, 0.6));
+	@include add-image-with-shadow(
+		'../assets/team/meeting-room-small.jpg',
+		'../assets/team/meeting-room-small.webp',
+		rgba(0, 0, 0, 0.6)
+	);
 
 	.section-title {
 		color: $light-gray;
@@ -761,7 +765,12 @@ header.hero-video {
 }
 
 .contact {
-	@include add-image-with-shadow('../assets/contact/warsaw-small.jpg', rgba(0, 9, 27, 0.8));
+	@include add-image-with-shadow(
+		'../assets/contact/warsaw-small.jpg',
+		'../assets/contact/warsaw-small.webp',
+		rgba(0, 9, 27, 0.8)
+	);
+
 	color: $white-color;
 
 	.section-title {
@@ -932,13 +941,6 @@ header.hero-video {
 			font-size: 20px;
 		}
 	}
-	nav {
-		.navbar-brand {
-			img {
-				width: 200px;
-			}
-		}
-	}
 	.team {
 		.swiper {
 			margin: 0 45px;
@@ -958,6 +960,15 @@ header.hero-video {
 }
 
 @media (max-width: 768px) {
+	nav {
+		.navbar-brand {
+			img {
+				@include background-image-webp('../assets/logoGameHavenSmall.png', '../assets/logoGameHavenSmall.webp');
+				width: 150px;
+			}
+		}
+	}
+
 	.prices {
 		.flatpickr-calendar.static.open {
 			width: 90%;
@@ -993,11 +1004,11 @@ header.hero-video {
 		scroll-padding-top: 176px;
 	}
 	.aboutus-hero {
-		@include background-aboutus-hero('../assets/platform-big.jpg', '../assets/platform-big.webp');
+		@include background-image-webp('../assets/platform-big.jpg', '../assets/platform-big.webp');
 	}
 
 	.team {
-		background-image: url('../assets/team/meeting-room-big.jpg');
+		@include background-image-webp('../assets/team/meeting-room-big.jpg', '../assets/team/meeting-room-big.webp');
 
 		.swiper-button-prev:after,
 		.swiper-button-next:after {
@@ -1015,7 +1026,8 @@ header.hero-video {
 		}
 	}
 	.contact {
-		background-image: url('../assets/contact/warsaw-big.jpg');
+		@include background-image-webp('../assets/contact/warsaw-big.jpg', '../assets/contact/warsaw-big.webp');
+
 		.social-media {
 			margin-bottom: 40px;
 		}
@@ -1024,7 +1036,7 @@ header.hero-video {
 
 @media (min-width: 1200px) {
 	header.hero-img {
-		@include background-hero('../assets/hero-big.jpg', '../assets/hero-big.webp');
+		@include background-image-webp('../assets/hero-big.jpg', '../assets/hero-big.webp');
 	}
 
 	.team {
