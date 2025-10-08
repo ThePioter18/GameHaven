@@ -19,10 +19,11 @@ router.post('/contact', async (req, res) => {
 		});
 
 		const mailOptions = {
-			from: email,
+			from: `GameHaven <${process.env.CONTACT_EMAIL}>`,
 			to: process.env.CONTACT_EMAIL,
+			replyTo: email,
 			subject: '📩 Wiadomość z formularza GameHaven',
-			text: `Email: ${email}\nWiadomość: ${message}`,
+			text: `Email klienta: ${email}\n\nWiadomość: ${message}`,
 		};
 
 		await transporter.sendMail(mailOptions);
