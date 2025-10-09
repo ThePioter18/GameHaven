@@ -6,7 +6,7 @@ const CONFIG = {
 		? '/.netlify/functions' // Netlify Functions
 		: isLocalhost
 		? 'http://localhost:5000' // local Express backend
-		: 'https://gamehaven-fvun.onrender.com', // production Render with the prefix /api
+		: window.CONFIG.baseURL, // production Render from file generate-env.js
 };
 
 export default CONFIG;
