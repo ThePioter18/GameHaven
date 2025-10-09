@@ -9,7 +9,7 @@ router.post('/contact', async (req, res) => {
 	try {
 		const resend = new Resend(process.env.RESEND_API_KEY);
 		await resend.emails.send({
-			from: `GameHaven <${process.env.CONTACT_EMAIL}>`,
+			from: 'GameHaven <onboarding@resend.dev>',
 			to: process.env.CONTACT_EMAIL,
 			reply_to: email,
 			subject: '📩 Wiadomość z formularza GameHaven',

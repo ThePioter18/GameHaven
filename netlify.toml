@@ -1,3 +1,4 @@
 [build]
   publish = "public"
   functions = "netlify/functions"
+  command = "npm run build"
