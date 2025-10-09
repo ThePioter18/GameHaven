@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const email = form.email.value;
 		const message = form.message.value;
 
-		const res = await fetch(`${CONFIG.baseURL}/contact`, {
+		const res = await fetch(`${CONFIG.baseURL}/api/contact`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ email, message }),
