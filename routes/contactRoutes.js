@@ -1,32 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 require('dotenv').config();
 
 router.post('/contact', async (req, res) => {
 	const { email, message } = req.body;
 
 	try {
-		const transporter = nodemailer.createTransport({
-			host: 'smtp.gmail.com',
-			port: 465, // port SSL
-			secure: true, // use SSL
-			auth: {
-				user: process.env.CONTACT_EMAIL, // your business contact email
-				pass: process.env.CONTACT_PASSWORD, // your generated gmail password for company name
-			},
-			tls: process.env.NODE_ENV === 'development' ? { rejectUnauthorized: false } : undefined,
-		});
-
-		const mailOptions = {
+		const resend = new Resend(process.env.RESEND_API_KEY);
+		await resend.emails.send({
 			from: `GameHaven <${process.env.CONTACT_EMAIL}>`,
 			to: process.env.CONTACT_EMAIL,
-			replyTo: email,
+			reply_to: email,
 			subject: '📩 Wiadomość z formularza GameHaven',
-			text: `Email klienta: ${email}\n\nWiadomość: ${message}`,
-		};
-
-		await transporter.sendMail(mailOptions);
+			html: `
+				<h3>Wiadomość z formularza kontaktowego</h3>
+				<p><strong>Email klienta:</strong> ${email}</p>
+				<p><strong>Wiadomość:</strong></p>
+				<p>${message}</p>
+			`,
+		});
 
 		res.status(200).json({ success: true, message: 'Wiadomość została wysłana pomyślnie.' });
 	} catch (error) {
